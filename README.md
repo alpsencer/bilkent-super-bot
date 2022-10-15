@@ -23,7 +23,7 @@
   <p align="center">
     A bot provides many services to help Bilkent University students in daily school life.
     <br />
-    <a href="https://github.com/alpsencer/bilkent-super-bot"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/alpsencer/bilkent-super-bot/blob/main/CHANGELOG.md"><strong>View changelog »</strong></a>
     <br />
     <br />
     <a href="t.me/bilkent_super_bot">View Demo</a>
@@ -148,6 +148,7 @@ You can use our bot from here: t.me/bilkent_super_bot
 <!-- ROADMAP -->
 ## Roadmap
 Detailed Roadmap: [BSB Roadmap](https://bit.ly/bilkentsuperbot)
+[Changelog](https://github.com/alpsencer/bilkent-super-bot/blob/main/CHANGELOG.md)
 
 - [x] Meal Menu Sender
 - [x] Auto Meal Menu Notifications Sender

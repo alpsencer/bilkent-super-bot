@@ -74,11 +74,11 @@ Here's why:
 * Auto meal menu sender
 * Auto Academic Calendar events sender
 * Auto Club Activity sender
-* And, +10 full automatic functions
+* +10 full automatic functions
 
 Of course, Bilkent Super Bot does not solve every student's all problems, but at least it reduces the routine.
 
-You can start using right now: t.me/bilkent_super_bot 
+You can start using right now: https://t.me/bilkent_super_bot 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

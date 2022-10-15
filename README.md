@@ -78,6 +78,8 @@ Here's why:
 
 Of course, Bilkent Super Bot does not solve every student's all problems, but at least it reduces the routine.
 
+You can start using right now: t.me/bilkent_super_bot 
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 

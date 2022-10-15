@@ -78,8 +78,6 @@ Here's why:
 
 Of course, Bilkent Super Bot does not solve every student's all problems, but at least it reduces the routine.
 
-Use the `BLANK_README.md` to get started.
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 

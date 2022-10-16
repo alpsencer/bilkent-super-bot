@@ -55,8 +55,3 @@ def takeScreenshot():
         byteImage = alternative.screenshot_as_png
         with open(f"meal\daily-menus\\secmeli_{day}.png", 'wb') as f:
             f.write(byteImage)
-<<<<<<< HEAD
-=======
-
-takeScreenshot()
->>>>>>> d39890e37368c90280de502b8d7630feb1df3a4f

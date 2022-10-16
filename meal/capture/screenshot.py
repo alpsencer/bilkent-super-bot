@@ -11,11 +11,11 @@ from PIL import Image
 def takeScreenshot():
 
     if(platform == "linux"):
-        CHROME_PATH = 'PATH/TO/CHROME'
-        CHROMEDRIVER_PATH = 'PATH/TO/CHROME-DRIVER'
+        CHROME_PATH = '/usr/bin/google-chrome'
+        CHROMEDRIVER_PATH = '/home/alpsencer/bilkent-super-bot/meal/capture/chromedriver'
     elif(platform == "win32"):
-        CHROME_PATH = 'PATH/TO/CHROME'
-        CHROMEDRIVER_PATH = 'PATH/TO/CHROME-DRIVER'
+        CHROME_PATH = 'C:\Program Files\Google\Chrome\Application\chrome.exe'
+        CHROMEDRIVER_PATH = 'meal\screenshot\chromedriver.exe'
 
     WINDOW_SIZE = "1920,4500"
 
@@ -50,5 +50,3 @@ def takeScreenshot():
         byteImage = alternative.screenshot_as_png
         with open(f"meal\daily-menus\\secmeli_{day}.png", 'wb') as f:
             f.write(byteImage)
-
-

@@ -34,7 +34,7 @@ def takeScreenshot():
     with open(f"meal\menu\weekly_menu.png", 'wb') as f:
         f.write(byteImage)
 
-    for day in range(1,8):
+    for day in range(0,7):
         lunch = driver.find_element_by_xpath(f"/html/body/div/center/table/tbody/tr[3]/td[2]/div/table/tbody/tr[1]/td/table/tbody/tr[2]/td/table/tbody/tr[{day*2}]")
         dinner = driver.find_element_by_xpath(f"/html/body/div/center/table/tbody/tr[3]/td[2]/div/table/tbody/tr[1]/td/table/tbody/tr[2]/td/table/tbody/tr[{day*2+1}]")
         alternative = driver.find_element_by_xpath(f"/html/body/div/center/table/tbody/tr[3]/td[2]/div/table/tbody/tr[1]/td/table/tbody/tr[3]/td/table/tbody/tr[{day+1}]")

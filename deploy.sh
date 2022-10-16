@@ -1,3 +1,4 @@
+# Docker Build & Deploy Script
 docker stop bsb-beta
 docker rm bsb-beta
 docker build -t bsb-beta .

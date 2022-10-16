@@ -81,7 +81,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
             InlineKeyboardButton("Communities", callback_data=str(SOON)),
         ],
         [
-            InlineKeyboardButton("About", callback_data=str(SOON)),
+            InlineKeyboardButton("About", callback_data=str(ABOUT)),
             InlineKeyboardButton("QUIT", callback_data=str(QUIT)),
         ]
     ]
@@ -310,7 +310,7 @@ async def about(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)
     await query.edit_message_text(
-        text="Bilkent Super Bot V 0.2.0-alpha \n BSB is [Open Source 🥳](https://github.com/alpsencer/bilkent-super-bot) \n [Contact me 👨‍💻](https://www.linkedin.com/in/yavuzalpsencerozturk)", reply_markup=reply_markup
+        text="""Bilkent Super Bot V 0.2.0-alpha \nBSB is <a href="https://github.com/alpsencer/bilkent-super-bot">Open Source 🥳</a> \nContributions are welcomed 😄\n<a href="https://www.linkedin.com/in/yavuzalpsencerozturk">Contact me 👨‍💻</a>""", parse_mode="HTML", reply_markup=reply_markup
     )
     # Transfer to conversation state `SECOND`
     return END_ROUTES

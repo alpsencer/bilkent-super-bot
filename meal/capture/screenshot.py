@@ -32,11 +32,11 @@ def takeScreenshot():
     driver = webdriver.Chrome(executable_path=CHROMEDRIVER_PATH,options=chrome_options)
     #driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
     driver.get("http://kafemud.bilkent.edu.tr/monu_eng.html")
-    driver.save_screenshot('meal/menu/weekly_menu.png')
+    driver.save_screenshot('bilkent-super-bot/meal/menu/weekly_menu.png')
     
     weekly = driver.find_element_by_xpath(f"/html/body/div/center/table/tbody/tr[3]/td[2]/div/table/tbody/tr[1]/td/table/tbody/tr[2]")
     byteImage = weekly.screenshot_as_png
-    with open(f"meal\menu\weekly_menu.png", 'wb') as f:
+    with open(f"/home/alpsencer/bilkent-super-bot/meal/menu/weekly_menu.png", 'wb') as f:
         f.write(byteImage)
 
     for day in range(0,7):
@@ -45,13 +45,13 @@ def takeScreenshot():
         alternative = driver.find_element_by_xpath(f"/html/body/div/center/table/tbody/tr[3]/td[2]/div/table/tbody/tr[1]/td/table/tbody/tr[3]/td/table/tbody/tr[{(day+1)+1}]")
 
         byteImage = lunch.screenshot_as_png
-        with open(f"meal\daily-menus\ogle_{day}.png", 'wb') as f:
+        with open(f"/home/alpsencer/bilkent-super-bot/meal/daily-menus/ogle_{day}.png", 'wb') as f:
             f.write(byteImage)
-        
+        print("Oglen eklendi. Gun: " + str(day))
         byteImage = dinner.screenshot_as_png
-        with open(f"meal\daily-menus\\aksam_{day}.png", 'wb') as f:
+        with open(f"/home/alpsencer/bilkent-super-bot/meal/daily-menus/aksam_{day}.png", 'wb') as f:
             f.write(byteImage)
-
+        print("Aksam eklendi. Gun: " + str(day))
         byteImage = alternative.screenshot_as_png
-        with open(f"meal\daily-menus\\secmeli_{day}.png", 'wb') as f:
+        with open(f"/home/alpsencer/bilkent-super-bot/meal/daily-menus/secmeli_{day}.png", 'wb') as f:
             f.write(byteImage)

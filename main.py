@@ -87,7 +87,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)
     # Send message with text and appended InlineKeyboard
-    await update.message.reply_text("Start handler, Choose a route", reply_markup=reply_markup)
+    await update.message.reply_text("Choose an option for me to help you:", reply_markup=reply_markup)
     # Tell ConversationHandler that we're in state `FIRST` now
     return START_ROUTES
 
@@ -171,10 +171,11 @@ async def sendDailyMenu(update: Update, context: ContextTypes.DEFAULT_TYPE) -> i
     
     day = date.today()
     weekDay = day.weekday()
-
+    
     await query.message.reply_photo(
         photo=open(f"meal/daily-menus/ogle_{weekDay}.png", 'rb')  , caption = "Öğle Yemeği"
     )
+
     await query.message.reply_photo(
         photo=open(f"meal/daily-menus/aksam_{weekDay}.png", 'rb')  , caption = "Aksam Yemeği"
     )
@@ -199,7 +200,7 @@ async def sendWeeklyMenu(update: Update, context: ContextTypes.DEFAULT_TYPE) -> 
     await query.message.reply_text(
         "Please wait this may take a few seconds"
     )
-    await ss(context)
+    #await ss(context)
     await query.message.reply_photo(
         photo=open("meal/menu/weekly_menu.png", 'rb')  , caption = "Weekly Menu"
     )

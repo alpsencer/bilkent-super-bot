@@ -53,7 +53,7 @@ logger = logging.getLogger(__name__)
 # Stages
 START_ROUTES, END_ROUTES = range(2)
 # Callback data
-START, DINING, SENDDAILYMENU, SENDWEEKLYMENU, OFFDINING, ONDINING, CALENDAR, LIBRARY, SPORT, SERVICES, COMMUNITIES, ABOUT, QUIT, SOON = range(14)
+START, DINING, SENDDAILYMENU, SENDWEEKLYMENU, OFFDINING, ONDINING, CALENDAR, LIBRARY, SPORT, SERVICES, COMMUNITIES, ABOUT, QUIT, SOON, SENDALTERNATIVEMENU= range(15)
 
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
@@ -141,6 +141,7 @@ async def dining(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
         [
             InlineKeyboardButton("Menu Of The Day", callback_data=str(SENDDAILYMENU)),
             InlineKeyboardButton("Menu Of The Week", callback_data=str(SENDWEEKLYMENU)),
+            InlineKeyboardButton("Alternative Menu", callback_data=str(SENDALTERNATIVEMENU)),
         ],
         [
             InlineKeyboardButton("Turn on Daily Notifications", callback_data=str(ONDINING)),
@@ -213,6 +214,36 @@ async def sendWeeklyMenu(update: Update, context: ContextTypes.DEFAULT_TYPE) -> 
     await query.edit_message_text(
         text="Menu Of The Week" , reply_markup=reply_markup
     )
+    return END_ROUTES
+
+async def sendAlternativeMenu(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
+    """Sends menu of the day"""
+    query = update.callback_query
+
+    # Function usage counter
+    dbman.ct_ma_meal(context)
+
+    await query.answer()
+    keyboard = [
+        [
+            InlineKeyboardButton("Main menu", callback_data=str(START)),
+            InlineKeyboardButton("Quit", callback_data=str(QUIT)),
+        ]
+    ]
+    
+    
+    day = date.today()
+    weekDay = day.weekday()
+
+    await query.message.reply_photo(
+        photo=open(f"meal/daily-menus/secmeli_{weekDay}.png", 'rb')  , caption = "Alternative menu"
+    )
+
+    reply_markup = InlineKeyboardMarkup(keyboard)
+    await query.edit_message_text(
+         text="Başka bir işlem yapmak ister misiniz?", reply_markup=reply_markup
+    )
+
     return END_ROUTES
 
 async def onDiningNotifications(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
@@ -433,6 +464,7 @@ def main() -> None:
                 CallbackQueryHandler(offDiningNotifications, pattern="^" + str(OFFDINING) + "$"),
                 CallbackQueryHandler(about, pattern="^" + str(ABOUT) + "$"),
                 CallbackQueryHandler(soon, pattern="^" + str(SOON) + "$"),
+                CallbackQueryHandler(sendAlternativeMenu, pattern="^" + str(SENDALTERNATIVEMENU) + "$"),
                 #CallbackQueryHandler(soon, pattern="^" + str(SOON) + "$"),
                 #CallbackQueryHandler(soon, pattern="^" + str(SOON) + "$"),
                 #CallbackQueryHandler(soon, pattern="^" + str(SOON) + "$"),

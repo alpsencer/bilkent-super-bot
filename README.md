@@ -15,7 +15,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/alpsencer/bilkent-super-bot">
-    <img src="assets\img\bsb-logo.png" alt="Logo" width="150" height="150">
+    <img src="assets\img\bsb-logo.png" alt="Logo" width="140" height="140">
   </a>
 
   <h3 align="center">Bilkent Super Bot (Beta)</h3>

@@ -1,0 +1,8 @@
+# UNDER CONSTRUCTION !!!
+version: '3.9'
+services:
+  bsb_bot:
+    container_name: bsb-beta-3
+    image: python:3.8
+    volumes:
+      - ankara-vol:/app/database

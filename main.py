@@ -377,8 +377,14 @@ async def end(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
 
 # SCREENSHOT
 async def ss(context: ContextTypes.DEFAULT_TYPE) -> None:
-    takeScreenshot()
-    
+    if(takeScreenshot()):
+        await context.bot.send_message(int(os.getenv("ADMIN_CHAT_ID")), "Menu refreshed sir!")
+    else:
+        await context.bot.send_message(int(os.getenv("ADMIN_CHAT_ID")), "Menu refreshing failed sir!")
+
+# REFRESH
+async def refresh(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
+    await ss(context)
 
 # DAILY MEAL NOTIFICATION FUNCTIONS
 async def daily_notification(context: ContextTypes.DEFAULT_TYPE) -> None:
@@ -408,7 +414,13 @@ async def send_daily(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None
     if(isRemoved):
         await context.bot.send_message(chat_id, "Daily meal notifications are already turned on")
     
-    context.job_queue.run_daily(daily_notification, datetime.time(8, 00,00, tzinfo=pytz.timezone('Europe/Istanbul')), days = (0,1,2,3,4,5,6), chat_id=chat_id, name=str(chat_id),data=chat_id) 
+    context.job_queue.run_daily(daily_notification, datetime.time(8, 00,00, tzinfo=pytz.timezone('Europe/Istanbul')), days = (1,2,3,4,5,6), chat_id=chat_id, name=str(chat_id),data=chat_id) 
+   
+
+    context.job_queue.run_daily(daily_notification, datetime.time(10, 58,00, tzinfo=pytz.timezone('Europe/Istanbul')), days = (0), chat_id=chat_id, name=str(chat_id),data=chat_id) 
+   
+
+    context.job_queue.run_daily(refresh, datetime.time(11, 00,00, tzinfo=pytz.timezone('Europe/Istanbul')), days = (0), chat_id=chat_id, name=str(chat_id),data=chat_id) 
     
     ## Duplicate of this code is in the notify on func
     #text = "Daily meal notifications are turned on"
@@ -448,6 +460,7 @@ def main() -> None:
     TOKEN = os.getenv("TELEGRAM_TOKEN")
     application = Application.builder().token(TOKEN).build()# type: ignore
 
+    application.add_handler(CommandHandler("refreshh", refresh))
     # Setup conversation handler with the states FIRST and SECOND
     # Use the pattern parameter to pass CallbackQueries with specific
     # data pattern to the corresponding handlers.

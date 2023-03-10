@@ -114,7 +114,7 @@ Download and install:
    ```sh
    git clone https://github.com/alpsencer/bilkent-super-bot.git
    ```
-3. Install Python Packages from requirements.txt
+3. Install Python packages from requirements.txt
    ```sh
    pip install -r requirements.txt
    ```

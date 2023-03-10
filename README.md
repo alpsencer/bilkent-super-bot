@@ -109,7 +109,7 @@ Download and install:
 
 #### Local
 
-1. Get a free API Key at from Telegram Botfather
+1. Get a free API Key from Telegram Botfather
 2. Clone the repo
    ```sh
    git clone https://github.com/alpsencer/bilkent-super-bot.git
